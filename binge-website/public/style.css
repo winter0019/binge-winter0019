@@ -1,28 +1,18 @@
 :root {
-    /* Layout */
+    /* Dimensions */
     --sidebar-width: 250px;
     --sidebar-collapsed: 78px;
     
-    /* Light Theme */
-    --primary-light: #2a2185;
-    --secondary-light: #ffffff;
-    --background-light: #f8f9fa;
-    
-    /* Dark Theme */
-    --primary-dark: #3b2fc6;
-    --secondary-dark: #e9ecef;
-    --background-dark: #0F0F0F;
-    
-    /* Active Theme (default dark) */
-    --primary-color: var(--primary-dark);
-    --secondary-color: var(--secondary-dark);
-    --background-color: var(--background-dark);
+    /* Colors - Dark Theme */
+    --primary-color: #3b2fc6;
+    --secondary-color: #e9ecef;
+    --background-color: #0F0F0F;
+    --accent-color: #ff4757;
     
     /* Transitions */
     --transition-speed: 0.3s;
 }
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     :root {
         --transition-speed: 0.01ms;
@@ -47,7 +37,6 @@ body {
     transition: background-color var(--transition-speed) ease;
 }
 
-/* Skip Link */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -64,42 +53,16 @@ body {
     transform: translateY(4rem);
 }
 
-/* Sidebar */
 .sidebar {
     position: fixed;
     height: 100vh;
     width: var(--sidebar-width);
     background: var(--primary-color);
     padding: 0.5rem 1rem;
-    z-index: 100;
     transition: width var(--transition-speed) ease;
-    
-    /* Accessibility */
-    nav {
-        aria-label: "Main navigation";
-    }
+    z-index: 1000;
 }
 
-/* Movie Cards */
-.movie-card {
-    position: relative;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform var(--transition-speed) ease;
-    
-    &:hover {
-        transform: translateY(-0.5rem);
-    }
-    
-    img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 2/3;
-        object-fit: cover;
-    }
-}
-
-/* Scroll Containers */
 .scroll-container {
     display: grid;
     grid-auto-flow: column;
@@ -107,22 +70,41 @@ body {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 1rem;
-    
-    &::-webkit-scrollbar {
-        height: 0.5rem;
-    }
-    
-    &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: 1rem;
-    }
+    scrollbar-color: var(--primary-color) rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Design */
+.scroll-container::-webkit-scrollbar {
+    height: 0.5rem;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 1rem;
+}
+
+.movie-card {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease;
+    scroll-snap-align: start;
+}
+
+.movie-card:hover {
+    transform: translateY(-0.5rem);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: var(--sidebar-collapsed);
@@ -133,18 +115,13 @@ body {
     }
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --primary-color: var(--primary-light);
-        --secondary-color: var(--secondary-light);
-        --background-color: var(--background-light);
-    }
-}
-
-/* NoScript Fallback */
 .noscript-warning {
     padding: 2rem;
     text-align: center;
     background: #dc3545;
     color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
 }
