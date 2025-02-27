@@ -1,7 +1,7 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
-  command = "mkdir -p public && echo '✅ Verified public directory exists'"
+  command = "mkdir -p public && echo 'Directory verified'"
 
 [functions]
   node_version = "18"
