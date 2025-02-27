@@ -1,21 +1,22 @@
+# Netlify Build Configuration
 [build]
-  publish = "public"
+  publish = "dist"  # Change this if using React (set to "build") or Next.js (set to "out")
   functions = "netlify/functions"
-  command = "echo '🚀 Build completed successfully'"
+  command = "npm run build"  # Ensure this matches your actual build command
 
+# Functions Configuration
 [functions]
   node_version = "18"
   node_bundler = "esbuild"
-  included_files = ["public/data/*.json"]
+
+[functions.included_files]
+  paths = ["data/*.json"]  # Ensure JSON files are in the correct path
 
 # SPA Routing & Custom Error Pages
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
-  conditions:
-    Status = "404"
 
 [[redirects]]
   from = "/liked_movies/*"
@@ -26,9 +27,8 @@
   from = "/404"
   to = "/404.html"
   status = 404
-  force = true
 
-# Security Headers (Global)
+# Security Headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -43,7 +43,7 @@
       style-src 'self' 'unsafe-inline' fonts.googleapis.com;
       img-src 'self' data: image.tmdb.org www.google-analytics.com;
       font-src 'self' fonts.gstatic.com;
-      connect-src 'self' api.themoviedb.org www.google-analytics.com;
+      connect-src 'self' api.themoviedb.org www.google-analytics.com acscdn.com;
       frame-src www.youtube.com;
     '''
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
