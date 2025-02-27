@@ -2,6 +2,11 @@
   "name": "binge",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p public && cp *.html public/ && cp *.css public/ && cp *.js public/ && cp favicon.ico public/"
+    "build": "mkdir -p public && cp *.html public/ && cp *.css public/ && cp *.js public/ && cp favicon.ico public/",
+    "predeploy": "npm run build",
+    "start": "serve public"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
   }
 }
