@@ -2,7 +2,7 @@
   "name": "binge",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p public && cp *.html public/ && cp *.css public/ && cp *.js public/ && cp favicon.ico public/",
+    "build": "npm run build"
     "predeploy": "npm run build",
     "start": "serve public"
   },
