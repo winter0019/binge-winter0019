@@ -1,33 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <!-- AdCash -->
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-    <script type="text/javascript">
-        aclib.runAutoTag({ zoneId: 'bulxzzgwys' });
-    </script>
-
-    <!-- Google Analytics -->
+    <!-- Character Encoding & Compatibility -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://api.themoviedb.org" crossorigin>
+    <link rel="preconnect" href="https://image.tmdb.org" crossorigin>
+    
+    <!-- Analytics (Async Loaded) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSB2RYVT12"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-NSB2RYVT12');
+        gtag('config', 'G-NSB2RYVT12', { 
+            transport_type: 'beacon',
+            anonymize_ip: true
+        });
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;900&display=swap" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    <!-- Ads (Async Loaded) -->
+    <script async id="aclib" src="//acscdn.com/script/aclib.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            aclib.runAutoTag({ zoneId: 'bulxzzgwys' });
+        });
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@100;900&display=swap" as="style" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@100;900&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" integrity="sha384-JGVj1E/fv8z4rZ+6/7fTjJwQ6JdFkM7Z8cZ4R4z4F4b4b4b4b4b4b4b4b4b4b4b4" crossorigin="anonymous">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/style.css" preload>
+    
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>Binge</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Metadata -->
+    <title>Binge - Stream Movies & TV Shows</title>
+    <meta name="description" content="Stream the latest movies and TV shows on Binge. Watch trending content, top-rated shows, and Bollywood hits all in one place.">
 </head>
+
 <body>
-    <!-- Sidebar structure same as provided -->
-    <!-- Main content structure same as provided -->
-    <script src="/script.js"></script>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" aria-label="Main navigation">
+        <!-- Your sidebar content -->
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Your main content -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="/script.js" defer></script>
+    
+    <!-- Noscript Fallback -->
+    <noscript>
+        <div class="noscript-warning">
+            <p>Please enable JavaScript to enjoy the full experience of Binge.</p>
+        </div>
+    </noscript>
 </body>
 </html>
